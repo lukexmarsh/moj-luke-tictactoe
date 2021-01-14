@@ -56,7 +56,7 @@ describe("tic-tac-toe", () => {
     });
   });
 
-  describe("when the first player has 3 Os in a row at the top", () => {
+  describe("when the second player has 3 Os in a row at the top", () => {
     it("should return O as the winner", () => {
       const ticTacToe = new TicTacToe();
       ticTacToe.play(3);
@@ -66,6 +66,47 @@ describe("tic-tac-toe", () => {
       ticTacToe.play(8);
       ticTacToe.play(2);
       expect(ticTacToe.winner).toEqual("O");
+    });
+  });
+
+  describe("when the first player has 3 Xs in a row in the middle", () => {
+    it("should return X as the winner", () => {
+      const ticTacToe = new TicTacToe();
+      ticTacToe.play(3);
+      ticTacToe.play(0);
+      ticTacToe.play(4);
+      ticTacToe.play(1);
+      ticTacToe.play(5);
+      expect(ticTacToe.winner).toEqual("X");
+    });
+  });
+
+  describe("when the first player has 3 Xs in a row on the left", () => {
+    it("should return X as the winner", () => {
+      const ticTacToe = new TicTacToe();
+      ticTacToe.play(0);
+      ticTacToe.play(2);
+      ticTacToe.play(3);
+      ticTacToe.play(5);
+      ticTacToe.play(7);
+      expect(ticTacToe.winner).toEqual("X");
+    });
+  });
+
+  describe("when the all positions are filled and there is no winner", () => {
+    it("should be a draw", () => {
+      const ticTacToe = new TicTacToe();
+      ticTacToe.play(1);
+      ticTacToe.play(0);
+      ticTacToe.play(2);
+      ticTacToe.play(4);
+      ticTacToe.play(8);
+      ticTacToe.play(5);
+      ticTacToe.play(3);
+      ticTacToe.play(6);
+      ticTacToe.play(7);
+      expect(ticTacToe.winner).toEqual("");
+      expect(ticTacToe.draw).toEqual(true);
     });
   });
 });
