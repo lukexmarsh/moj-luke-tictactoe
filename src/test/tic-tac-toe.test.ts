@@ -44,8 +44,8 @@ describe("tic-tac-toe", () => {
     });
   });
 
-  describe("when the second piece is played on 0", () => {
-    it("should not overwrite the value on that board position", () => {
+  describe("when the first player has 3 Xs in a row", () => {
+    it("should return O as the winner", () => {
       const ticTacToe = new TicTacToe();
       ticTacToe.play(0);
       ticTacToe.play(3);
@@ -53,6 +53,19 @@ describe("tic-tac-toe", () => {
       ticTacToe.play(4);
       ticTacToe.play(2);
       expect(ticTacToe.winner).toEqual("X");
+    });
+  });
+
+  describe("when the first player has 3 Os in a row", () => {
+    it("should return O as the winner", () => {
+      const ticTacToe = new TicTacToe();
+      ticTacToe.play(3);
+      ticTacToe.play(0);
+      ticTacToe.play(4);
+      ticTacToe.play(1);
+      ticTacToe.play(8);
+      ticTacToe.play(2);
+      expect(ticTacToe.winner).toEqual("O");
     });
   });
 });

@@ -16,11 +16,11 @@ export class TicTacToe {
       this.board[positionOnBoard] = this.currentPlayer;
 
       if (
-        this.board[0] === "X" &&
-        this.board[1] === "X" &&
-        this.board[2] === "X"
+        this.board[0] === this.currentPlayer &&
+        this.board[1] === this.currentPlayer &&
+        this.board[2] === this.currentPlayer
       ) {
-        this.winner = "X";
+        this.winner = this.currentPlayer;
       }
 
       this.currentPlayer =
