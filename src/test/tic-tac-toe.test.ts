@@ -44,7 +44,7 @@ describe("tic-tac-toe", () => {
     });
   });
 
-  describe("when the first player has 3 Xs in a row", () => {
+  describe("when the first player has 3 Xs in a row at the top", () => {
     it("should return O as the winner", () => {
       const ticTacToe = new TicTacToe();
       ticTacToe.play(0);
@@ -56,7 +56,7 @@ describe("tic-tac-toe", () => {
     });
   });
 
-  describe("when the first player has 3 Os in a row", () => {
+  describe("when the first player has 3 Os in a row at the top", () => {
     it("should return O as the winner", () => {
       const ticTacToe = new TicTacToe();
       ticTacToe.play(3);
