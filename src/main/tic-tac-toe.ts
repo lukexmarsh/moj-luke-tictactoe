@@ -14,18 +14,18 @@ export class TicTacToe {
   }
 
   private winConditions: WinCondition[] = [
-    {FirstPosition: 0, SecondPosition: 1, ThirdPosition: 2},
-    {FirstPosition: 3, SecondPosition: 4, ThirdPosition: 5},
-    {FirstPosition: 6, SecondPosition: 7, ThirdPosition: 8},
-    {FirstPosition: 0, SecondPosition: 3, ThirdPosition: 6},
-    {FirstPosition: 1, SecondPosition: 4, ThirdPosition: 7},
-    {FirstPosition: 2, SecondPosition: 5, ThirdPosition: 8},
-    {FirstPosition: 0, SecondPosition: 4, ThirdPosition: 8},
-    {FirstPosition: 2, SecondPosition: 4, ThirdPosition: 6},
-  ]
+    { FirstPosition: 0, SecondPosition: 1, ThirdPosition: 2 },
+    { FirstPosition: 3, SecondPosition: 4, ThirdPosition: 5 },
+    { FirstPosition: 6, SecondPosition: 7, ThirdPosition: 8 },
+    { FirstPosition: 0, SecondPosition: 3, ThirdPosition: 6 },
+    { FirstPosition: 1, SecondPosition: 4, ThirdPosition: 7 },
+    { FirstPosition: 2, SecondPosition: 5, ThirdPosition: 8 },
+    { FirstPosition: 0, SecondPosition: 4, ThirdPosition: 8 },
+    { FirstPosition: 2, SecondPosition: 4, ThirdPosition: 6 },
+  ];
 
   public play(positionOnBoard: number) {
-    if (this.board[positionOnBoard] === "") {
+    if (this.getCell(positionOnBoard) === "") {
       this.board[positionOnBoard] = this.currentPlayer;
       this.checkWinCondition();
 
@@ -37,23 +37,33 @@ export class TicTacToe {
   }
 
   private checkWinCondition() {
-    this.winConditions.forEach(winCondition => {
+    this.winConditions.forEach((winCondition) => {
       if (
-          this.checkCurrentWinCondition(this.getCell(winCondition.FirstPosition), this.getCell(winCondition.SecondPosition), this.getCell(winCondition.ThirdPosition))
+        this.checkCurrentWinCondition(
+          this.getCell(winCondition.FirstPosition),
+          this.getCell(winCondition.SecondPosition),
+          this.getCell(winCondition.ThirdPosition)
+        )
       ) {
         this.winner = this.currentPlayer;
       }
-    })
+    });
 
-    if(this.board.indexOf("") === -1) {
+    this.checkDrawCondition();
+  }
+
+  private checkDrawCondition() {
+    if (this.board.indexOf("") === -1) {
       this.draw = true;
     }
   }
 
   private checkCurrentWinCondition(cell: string, cell1: string, cell2: string) {
-    return cell === this.currentPlayer &&
-        cell1 === this.currentPlayer &&
-        cell2 === this.currentPlayer;
+    return (
+      cell === this.currentPlayer &&
+      cell1 === this.currentPlayer &&
+      cell2 === this.currentPlayer
+    );
   }
 
   private getCell(index: number) {
